@@ -28,7 +28,7 @@ The **Book App** is an Android application built using Kotlin that allows users 
 
 Make sure you have the following installed:
 
-- Android Studio (Latest version)
+- Android Studio (
 - Kotlin SDK
 - An active internet connection
 
@@ -47,19 +47,7 @@ Make sure you have the following installed:
    - Click on `Open an existing project` and select the cloned folder.
    - Let Gradle sync the dependencies.
 
-3. **Set up API Key:**
-
-   - Get a free API key from [Google Books API](https://console.cloud.google.com/)
-   - Add your API key in `gradle.properties`:
-     ```properties
-     GOOGLE_BOOKS_API_KEY=your_api_key_here
-     ```
-   - Use it in the `BookViewModel` or API service class:
-     ```kotlin
-     val response = apiService.getBooks(query, BuildConfig.GOOGLE_BOOKS_API_KEY)
-     ```
-
-4. **Run the project:**
+3. **Run the project:**
 
    - Connect an emulator or an Android device.
    - Click the **Run** button in Android Studio.
@@ -70,19 +58,39 @@ Ensure the following dependencies are included in `build.gradle (Module: app)`:
 
 ```gradle
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Jetpack Compose
+    implementation'androidx.compose.ui:ui:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.activity:activity-ktx:1.8.0'
+    implementation 'androidx.fragment:fragment-ktx:1.6.1'
+
+    // ViewModel & LiveData
+    implementation'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
-    implementation 'androidx.recyclerview:recyclerview:1.3.1'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    // Retrofit for API calls
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+
+    // Room Database for storing favorite books
+    implementation 'androidx.room:room-runtime:2.6.1'
+    kapt 'androidx.room:room-compiler:2.6.1'
+    // Room KTX for coroutines
+    implementation androidx.room:room-ktx:2.6.1'
+    // Coroutines for asynchronous database operations
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    //glide for image process
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 }
 ```
 
